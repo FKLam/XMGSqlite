@@ -19,6 +19,12 @@ git_commit(path: ".", message: "版本升级维护")
 #    git push origin master
 push_to_git_remote
 
+# 验证tag是否存在，如果存在，应该删除本地远程tag
+if git_tag_exists(tag: tagName)
+  UI.message("Fount it tag:#{tagName}")
+  remove_tag(tag: tagName)
+end
+
 # 3. git tag -a '标签名' -m 'xxx'
 add_git_tag(
 tag: tagName
